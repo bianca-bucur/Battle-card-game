@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="Licenta.GameScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Licenta"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="White" Foreground="Purple" FontWeight="Bold">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition Height="170"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <DockPanel Grid.Row="0" Grid.ColumnSpan="4" Background="Black">
+            <Image x:Name="pHealthImg"></Image>
+            <TextBlock x:Name="pHealthPoints" Width="50" Background="Black" FontSize="20" TextAlignment="Center"></TextBlock>
+            <Image x:Name="pShieldImg"></Image>
+            <TextBlock x:Name="pShieldPoints"  Foreground="Purple" Background="Black" FontSize="20" TextAlignment="Center"></TextBlock>
+            <Image x:Name="pStrengthImg"></Image>
+            <TextBlock x:Name="pStrengthPoints" Foreground="Purple" Background="Black" FontSize="20" TextAlignment="Center"></TextBlock>
+            <Image x:Name="pEnergyImg"></Image>
+            <TextBlock x:Name="pEnergyPoints" TextAlignment="Left" Foreground="Purple" Background="Black" FontSize="20" ></TextBlock>
+        </DockPanel>
+        <DockPanel Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="4" Background="Black">
+            <TextBlock x:Name="eHealthPoints" DockPanel.Dock="Right" Width="50" Background="Black" FontSize="20" TextAlignment="Center"></TextBlock>
+            <Image x:Name="eHealthImg" DockPanel.Dock="Right"></Image>
+            <TextBlock x:Name="eShieldPoints" DockPanel.Dock="Right" Foreground="Purple" Background="Black" FontSize="20" TextAlignment="Center"></TextBlock>
+            <Image x:Name="eShieldImg" DockPanel.Dock="Right"></Image>
+            <TextBlock x:Name="eStrengthPoints" DockPanel.Dock="Right" Foreground="Purple" Background="Black" FontSize="20" TextAlignment="Center"></TextBlock>
+            <Image x:Name="eStrengthImg" HorizontalAlignment="Right" DockPanel.Dock="Right"></Image>
+            <TextBlock x:Name="eIntent" HorizontalAlignment="Right" Foreground="Purple" Background="Black" FontSize="20"></TextBlock>
+        </DockPanel>
+        <Image x:Name="backgroundImage" Grid.Row="1" Grid.ColumnSpan="8" Source="{StaticResource BackgroundImage}" Stretch="UniformToFill"></Image>
+        
+        <Label x:Name="enemyName" Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="2" Height="50" Width="100"></Label>
+        <Image x:Name="enemyImage" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="4" >
+            <Image.Resources>
+                <Storyboard x:Key="HitStoryboard">
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="RenderTransform.(RotateTransform.Angle)" AutoReverse="True" FillBehavior="Stop">
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="10"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-10"/>
+                    </DoubleAnimationUsingKeyFrames>
+                </Storyboard>
+            </Image.Resources>
+            <Image.RenderTransform>
+                <RotateTransform  />
+            </Image.RenderTransform>
+        </Image>
+        <DockPanel x:Name="cardDisplay" Height="170" Grid.Row="2" Grid.ColumnSpan="8" Background="Black">
+            <Button Style="{StaticResource CardBtn}" />
+            <Button Style="{StaticResource CardBtn}" />
+            <Button Style="{StaticResource CardBtn}" />
+            <Button Style="{StaticResource CardBtn}" />
+            <Button Style="{StaticResource CardBtn}" />
+            <Button x:Name="exitGame" Width="90" DockPanel.Dock="Right" HorizontalAlignment="Right" Click="ExitGame">Exit Game</Button>
+            <Button x:Name="endTurn" Width="90" Margin="30 0" DockPanel.Dock="Right" HorizontalAlignment="Right">End Turn</Button>
+        </DockPanel>
+    </Grid>
+</UserControl>
